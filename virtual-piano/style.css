@@ -46,7 +46,7 @@ body {
 	width: 306px;
 	height: 40px;
 	margin: 0 auto;
-	margin-bottom: 80px;
+	margin-bottom: 20px;
 }
 .btn {
 	width: 150px;
@@ -260,6 +260,13 @@ body {
 	right: -5px;
 	letter-spacing: 0;
 }
+.demo-container{
+	flex-wrap: nowrap;
+	justify-content: center;
+	margin-bottom: 80px;
+}
+
+
 @media (max-width: 768px) {
 	.fullscreen {
 		top: 10px;
@@ -308,7 +315,7 @@ body {
 	.btn-container {
 		width: 244px;
 		height: 40px;
-		margin-bottom: 80px;
+		margin-bottom: 20px;
 	}
 	.btn {
 		width: 120px;

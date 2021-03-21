@@ -118,3 +118,80 @@ const  keyUp = (event) => {
 
 window.addEventListener("keydown", keyDown);
 window.addEventListener("keyup", keyUp);
+
+
+// play demo
+const DEMO_BTN = document.querySelector(".demo");
+
+const playNote = (btn_number, interval) => {
+    let note;
+    switch (btn_number){
+        case "c": note = 0;
+            break;
+        case "c#": note = 7;
+            break;
+        case "d": note = 1;
+            break;
+        case "d#": note = 8;
+            break;
+        case "e": note = 2;
+            break;
+        case "f": note = 3;
+            break;
+        case "f#": note = 10;
+            break;
+        case "g": note = 4;
+            break;
+        case "g#": note = 11;
+            break;
+        case "a": note = 5;
+            break;
+        case "a#": note = 12;
+            break;
+        case "b": note = 6;
+            break;
+        default : note = null;
+    }
+
+    if (note) {
+        startSoundKey(BUTTONS.item(note));
+        setTimeout("stopSoundKey(BUTTONS.item("+ note + "))", 100);
+    }
+
+}
+
+const play_demo = () => {
+    if (!DEMO_BTN.classList.contains("btn-active")) {
+        DEMO_BTN.classList.add("btn-active");
+        let i = 0;
+        setTimeout('playNote("d",500)', i);
+        setTimeout('playNote("d",250)', i += 500);
+        setTimeout('playNote("a",250)', i += 250);
+        setTimeout('playNote("g",500)', i += 250);
+        setTimeout('playNote("f",500)', i += 500);
+        setTimeout('playNote("e",500)', i += 500);
+        setTimeout('playNote("e",250)', i += 500);
+        setTimeout('playNote("e",250)', i += 250);
+        setTimeout('playNote("g",500)', i += 250);
+        setTimeout('playNote("f",250)', i += 500);
+        setTimeout('playNote("e",250)', i += 250);
+        setTimeout('playNote("d",500)', i += 250);
+        setTimeout('playNote("d",250)', i += 500);
+        setTimeout('playNote("f",250)', i += 250);
+        setTimeout('playNote("e",250)', i += 250);
+        setTimeout('playNote("f",250)', i += 250);
+        setTimeout('playNote("e",250)', i += 250);
+        setTimeout('playNote("f",250)', i += 250);
+        setTimeout('playNote("d",500)', i += 250);
+        setTimeout('playNote("d",250)', i += 500);
+        setTimeout('playNote("f",250)', i += 250);
+        setTimeout('playNote("e",250)', i += 250);
+        setTimeout('playNote("f",250)', i += 250);
+        setTimeout('playNote("e",250)', i += 250);
+        setTimeout('playNote("f",250)', i += 250);
+        setTimeout('DEMO_BTN.classList.remove("btn-active")', i + 250);
+    }
+}
+
+
+DEMO_BTN.addEventListener("click",play_demo);
