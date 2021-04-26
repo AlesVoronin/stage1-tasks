@@ -15,6 +15,9 @@ const fullScreenMode = (event) => {
 function propertyUpdate(){
     const suffix = this.dataset.sizing || '';
     document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    drawImage();
+
+
     this.nextElementSibling.value = this.value;
 }
 
@@ -79,18 +82,37 @@ function getImage() {
 }
 
 // LOAD PICTURE
-// const fileInput = document.querySelector('input[type="file"]');
-// fileInput.addEventListener('change', function (e) {
-//     const file = fileInput.files[0];
-//     const reader = new FileReader();
-//     reader.onload = () => {
-//         const img = new Image();
-//         img.src = reader.result;
-//         images.splice()
-//         // image_wrapper.setAttribute('src', img.src);
-//     }
-//     reader.readAsDataURL(file);
-// })
+const fileInput = document.querySelector('input[type="file"]');
+fileInput.addEventListener('change', function (e) {
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+        const img = new Image();
+        img.src = reader.result;
+        //images.splice(i, 0, img.src);
+        image_wrapper.setAttribute('src', img.src);
+    }
+    reader.readAsDataURL(file);
+})
+
+// CANVAS
+const canvas = document.querySelector('canvas');
+
+function drawImage() {
+    const img = new Image();
+    img.setAttribute('crossOrigin', 'anonymous');
+    img.src = document.querySelector('.editor img').src;
+    img.onload = function () {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext("2d");
+        const selectImage = document.querySelector('.editor img');
+        ctx.filter = window.getComputedStyle(selectImage)["filter"];
+        ctx.drawImage(img, 0, 0);
+    }
+}
+
+
 
 
 
