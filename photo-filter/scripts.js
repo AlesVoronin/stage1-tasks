@@ -72,6 +72,7 @@ function viewImage(src){
     img.src = src;
     img.onload = () =>{
         image_wrapper.setAttribute('src',`${src}`);
+        drawImage();
     }
 }
 function getImage() {
