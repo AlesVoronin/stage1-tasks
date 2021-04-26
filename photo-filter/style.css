@@ -169,10 +169,7 @@ output {
   --hue: 0deg;
 }
 canvas{
-  /*display: none;*/
-
-
-
+  display: none;
 }
 img {
   height: 100%;
