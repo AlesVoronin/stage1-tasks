@@ -2,6 +2,9 @@ const inputsAll = document.querySelectorAll('.filters input');
 const reset = document.getElementsByClassName('btn-reset');
 const fullscreen = document.getElementsByClassName('fullscreen');
 
+drawImage();
+
+
 const fullScreenMode = (event) => {
     if (fullscreen.item(0).classList.contains("openfullscreen")) {
         document.documentElement.requestFullscreen();
@@ -16,8 +19,6 @@ function propertyUpdate(){
     const suffix = this.dataset.sizing || '';
     document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
     drawImage();
-
-
     this.nextElementSibling.value = this.value;
 }
 
@@ -35,6 +36,7 @@ function resetProperties(){
             document.documentElement.style.setProperty(`--${input.name}`, input.value + suffix);
             input.nextElementSibling.value = input.value;
         }
+        drawImage();
     })
 }
 
@@ -77,6 +79,7 @@ function getImage() {
     const imageSrc = base + images[index];
     viewImage(imageSrc);
     i++;
+
     // next_btn.disabled = true;
     // setTimeout(function (){next_btn.disabled = false},1000);
 }
@@ -112,6 +115,16 @@ function drawImage() {
     }
 }
 
+
+// DOWNLOAD IMAGE
+const download = document.querySelector('.btn-save');
+download.addEventListener('click', function(e) {
+    let link = document.createElement('a');
+    link.download = 'download.png';
+    link.href = canvas.toDataURL();
+    link.click();
+    link.delete;
+});
 
 
 
